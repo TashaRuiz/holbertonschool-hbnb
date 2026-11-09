@@ -1,7 +1,7 @@
 # High-Level Package Diagram for Holberton HBnB (Task-0)
 
 ## What is the HBnB Project?
-- HBnB is a simplified version of Airbnb, is for the Holberton student make a replica of it like a final project.
+HBnB is a simplified version of Airbnb, is for the Holberton student make a replica of it like a final project.
 
 Users can:
 - Create accounts
