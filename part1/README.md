@@ -140,5 +140,74 @@ The diagram illustrates the internal structure of the application, focusing on i
 
 ---
 
+# Business Logic Layer: Class Diagram
+
+```mermaid
+classDiagram
+    direction TB
+
+    class BaseModel {
+        <<abstract>>
+        +UUID id
+        +DateTime created_at
+        +DateTime updated_at
+        +save()
+        +update(data)
+        +delete()
+    }
+
+    class User {
+        +String first_name
+        +String last_name
+        +String email
+        +String password
+        +Boolean is_admin
+        +register()
+        +update_profile(data)
+        +delete_account()
+        +create_place()
+        +create_review()
+    }
+
+    class Place {
+        +String title
+        +String description
+        +Float price
+        +Float latitude
+        +Float longitude
+        +update_details(data)
+        +add_amenity(amenity)
+        +remove_amenity(amenity)
+        +get_reviews()
+        +calculate_average_rating()
+    }
+
+    class Review {
+        +String text
+        +Integer rating
+        +update_review(data)
+        +delete_review()
+        +validate_rating()
+    }
+
+    class Amenity {
+        +String name
+        +String description
+        +update_amenity(data)
+    }
+
+    BaseModel <|-- User : inherits
+    BaseModel <|-- Place : inherits
+    BaseModel <|-- Review : inherits
+    BaseModel <|-- Amenity : inherits
+
+    User "1" --> "0..*" Place : hosts
+    User "1" --> "0..*" Review : writes
+    Place "1" --> "0..*" Review : receives
+    Place "0..*" --> "0..*" Amenity : includes
+```
+
+---
+
 ## Author
 >Developed by Tasha Arroyo, a Holberton School student 
